@@ -1,0 +1,13 @@
+{
+  "name": "exercise-event-emitter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "emitter.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "dependencies": {
+    "jest": "24.9.0"
+  },
+  "keywords": []
+}
