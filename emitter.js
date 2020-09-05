@@ -3,9 +3,13 @@ module.exports = {
     const eventsEmitter = {
       events: {},
       on: function (event, callback) {
-        if(this.events[event] == undefined) {
+        if(callback === undefined){
+          throw new Error("Expected a function as the second argument")
+
+        }else if(this.events[event] == undefined){
           this.events[event] = [callback]
-        }else{
+
+        }else if(!this.events[event].includes(callback)){
           this.events[event].push(callback)
         }
       },

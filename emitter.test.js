@@ -41,7 +41,7 @@ describe("listening and unlistening", () => {
     expect(emitter.events.click).toContain(callback);
   });
 
-  test.only(".on() - should register more than one event listener", () => {
+  test(".on() - should register more than one event listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("customEvent", callback1);
@@ -69,7 +69,7 @@ describe("listening and unlistening", () => {
     }).toThrow("Expected a function as the second argument");
   });
 
-  test(".off() - should unregister a specific event listener", () => {
+  test.only(".off() - should unregister a specific event listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("click", callback1);
