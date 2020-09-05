@@ -13,7 +13,10 @@ module.exports = {
           this.events[event].push(callback)
         }
       },
-      off: () => {},
+      off: function (event, callback) {
+        const callbackIndex =  this.events[event].indexOf(callback)
+        this.events[event].splice(callbackIndex, 1)
+    },
       emit: () => {},
       once: () => {},
       race: () => {},

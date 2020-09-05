@@ -69,7 +69,7 @@ describe("listening and unlistening", () => {
     }).toThrow("Expected a function as the second argument");
   });
 
-  test.only(".off() - should unregister a specific event listener", () => {
+  test(".off() - should unregister a specific event listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("click", callback1);
@@ -81,7 +81,7 @@ describe("listening and unlistening", () => {
     expect(emitter.events.click).not.toContain(callback1);
   });
 
-  test(".off() - should not throw if event doesn't exist", () => {
+  test.only(".off() - should not throw if event doesn't exist", () => {
     expect(() => emitter.off("some-event")).not.toThrow();
   });
 
