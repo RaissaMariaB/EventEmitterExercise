@@ -81,11 +81,11 @@ describe("listening and unlistening", () => {
     expect(emitter.events.click).not.toContain(callback1);
   });
 
-  test.only(".off() - should not throw if event doesn't exist", () => {
+  test(".off() - should not throw if event doesn't exist", () => {
     expect(() => emitter.off("some-event")).not.toThrow();
   });
 
-  test(".on() - should return a method which unregisters the passed listener", () => {
+  test.only(".on() - should return a method which unregisters the passed listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     const cancel = emitter.on("load", callback1);
