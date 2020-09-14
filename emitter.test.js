@@ -85,7 +85,7 @@ describe("listening and unlistening", () => {
     expect(() => emitter.off("some-event")).not.toThrow();
   });
 
-  test.only(".on() - should return a method which unregisters the passed listener", () => {
+  test(".on() - should return a method which unregisters the passed listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     const cancel = emitter.on("load", callback1);
@@ -98,7 +98,7 @@ describe("listening and unlistening", () => {
 });
 
 describe("emitting events", () => {
-  test(".emit() - should emit an event and execute all listeners callbacks", () => {
+  test.only(".emit() - should emit an event and execute all listeners callbacks", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("resize", callback1);

@@ -26,7 +26,11 @@ module.exports = {
           this.events[event].splice(callbackIndex, 1)
         }
     },
-      emit: function (event, callback) {
+      emit: function (event) {
+        const eventsArr = this.events[event]
+        eventsArr.forEach(element => {
+          element()
+        });
 
       },
       once: () => {},
