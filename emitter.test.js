@@ -6,33 +6,33 @@ let emitter;
 beforeEach(() => (emitter = EventEmitter.create()));
 
 describe("initializing", () => {
-  test("should start with an empty `events` dictionary", () => {
+  test.only("should start with an empty `events` dictionary", () => {
     expect(emitter.events).toEqual({});
   });
 
-  test('should have a "on()" method', () => {
+  test.only('should have a "on()" method', () => {
     expect(typeof emitter.on).toBe("function");
   });
 
-  test('should have a "off()" method', () => {
+  test.only('should have a "off()" method', () => {
     expect(typeof emitter.off).toBe("function");
   });
 
-  test('should have a "emit()" method', () => {
+  test.only('should have a "emit()" method', () => {
     expect(typeof emitter.emit).toBe("function");
   });
 
-  test('should have a "once()" method', () => {
+  test.only('should have a "once()" method', () => {
     expect(typeof emitter.once).toBe("function");
   });
 
-  test('should have a "race()" method', () => {
+  test.only('should have a "race()" method', () => {
     expect(typeof emitter.race).toBe("function");
   });
 });
 
 describe("listening and unlistening", () => {
-  test(".on() - should register a event listener", () => {
+  test.only(".on() - should register a event listener", () => {
     const callback = jest.fn();
 
     emitter.on("click", callback);
@@ -41,7 +41,7 @@ describe("listening and unlistening", () => {
     expect(emitter.events.click).toContain(callback);
   });
 
-  test(".on() - should register more than one event listener", () => {
+  test.only(".on() - should register more than one event listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("customEvent", callback1);
@@ -51,7 +51,7 @@ describe("listening and unlistening", () => {
     expect(emitter.events.customEvent).toContain(callback2);
   });
 
-  test(".on() - should NOT register the same listener more than once", () => {
+  test.only(".on() - should NOT register the same listener more than once", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("success", callback1);
@@ -63,13 +63,13 @@ describe("listening and unlistening", () => {
     expect(emitter.events.success).toContain(callback2);
   });
 
-  test(".on() - should throw an error if no callback is passed", () => {
+  test.only(".on() - should throw an error if no callback is passed", () => {
     expect(() => {
       emitter.on("keyup");
     }).toThrow("Expected a function as the second argument");
   });
 
-  test(".off() - should unregister a specific event listener", () => {
+  test.only(".off() - should unregister a specific event listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("click", callback1);
@@ -81,11 +81,11 @@ describe("listening and unlistening", () => {
     expect(emitter.events.click).not.toContain(callback1);
   });
 
-  test(".off() - should not throw if event doesn't exist", () => {
+  test.only(".off() - should not throw if event doesn't exist", () => {
     expect(() => emitter.off("some-event")).not.toThrow();
   });
 
-  test(".on() - should return a method which unregisters the passed listener", () => {
+  test.only(".on() - should return a method which unregisters the passed listener", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     const cancel = emitter.on("load", callback1);
@@ -98,7 +98,7 @@ describe("listening and unlistening", () => {
 });
 
 describe("emitting events", () => {
-  test(".emit() - should emit an event and execute all listeners callbacks", () => {
+  test.only(".emit() - should emit an event and execute all listeners callbacks", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("resize", callback1);
@@ -121,7 +121,7 @@ describe("emitting events", () => {
     );
   });
 
-  test(".emit() - should pass event `type` to all callbacks", () => {
+  test.only(".emit() - should pass event `type` to all callbacks", () => {
     const callback = jest.fn();
 
     emitter.on("loading", callback);

@@ -1,7 +1,7 @@
 module.exports = {
   create() {
     const eventsEmitter = {
-      events: {},
+      events: {}, //
       on: function (event, callback) {
         const cancelCreator = () => {
           const ev = this.events[event]
@@ -26,12 +26,16 @@ module.exports = {
           this.events[event].splice(callbackIndex, 1)
         }
     },
-      emit: function (event, message) {
-        const eventsArr = this.events[event]
-        eventsArr.forEach(element => {
-          element(message)
+      emit: function (event, eventData) {
+        const eventsArr = this.events[event] // o valor de this.events[event] é um array de callbacks
+        eventsArr.forEach(element => { // element vai ser cada callback do array de callbacks
+          if (!eventData) {
+            element({ type: event })
+          } else {
+            eventData.type = event
+            element(eventData)
+          }
         });
-
       },
       once: () => {},
       race: () => {},
