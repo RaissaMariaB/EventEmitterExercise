@@ -98,7 +98,7 @@ describe("listening and unlistening", () => {
 });
 
 describe("emitting events", () => {
-  test.only(".emit() - should emit an event and execute all listeners callbacks", () => {
+  test(".emit() - should emit an event and execute all listeners callbacks", () => {
     const [callback1, callback2] = [jest.fn(), jest.fn()];
 
     emitter.on("resize", callback1);
@@ -110,7 +110,7 @@ describe("emitting events", () => {
     expect(callback2).toBeCalledTimes(1);
   });
 
-  test(".emit() - should pass event data, as the second argument, to all callbacks", () => {
+  test.only(".emit() - should pass event data, as the second argument, to all callbacks", () => {
     const callback = jest.fn();
 
     emitter.on("message_received", callback);
