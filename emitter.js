@@ -28,14 +28,16 @@ module.exports = {
     },
       emit: function (event, eventData) {
         const eventsArr = this.events[event] // o valor de this.events[event] é um array de callbacks
-        eventsArr.forEach(element => { // element vai ser cada callback do array de callbacks
-          if (!eventData) {
-            element({ type: event })
-          } else {
-            eventData.type = event
-            element(eventData)
-          }
-        });
+        if (eventsArr != undefined){
+          eventsArr.forEach(element => { // element vai ser cada callback do array de callbacks
+            if (!eventData) {
+              element({ type: event })
+            } else {
+              eventData.type = event
+              element(eventData)
+            }
+          });
+        }
       },
       once: () => {},
       race: () => {},

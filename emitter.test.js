@@ -132,14 +132,14 @@ describe("emitting events", () => {
     );
   });
 
-  test(".emit() - should do nothing if event has no callbacks", () => {
+  test.only(".emit() - should do nothing if event has no callbacks", () => {
     expect(() => emitter.emit("keyup")).not.toThrow();
   });
 });
 
 describe("special listeners", () => {
   describe("once()", () => {
-    test("should listen to an event only once", () => {
+    test.only("should listen to an event only once", () => {
       const callback = jest.fn();
 
       emitter.once("click", callback);
